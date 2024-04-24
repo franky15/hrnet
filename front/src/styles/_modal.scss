@@ -1,0 +1,48 @@
+
+.modalContainer{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; /* Pour centrer l'enfant */
+    background-color: #333;
+
+    &__modal {
+
+        width: 50%;
+        height: 300px;
+        border-radius: 20px;
+        background-color: white;
+        font-size: 50px;
+       font-weight: bold;
+
+       // border: solid red;
+       
+       .titleConfirm{
+
+        text-align: center;
+        //border:  solid red;
+       }
+       .btnConfirm{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 80px;
+        //border:  solid red;
+       
+        button{
+            width: 20%;
+            height: 50px;
+            cursor: pointer;
+
+        }
+       }
+    }
+}

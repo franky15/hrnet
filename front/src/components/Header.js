@@ -7,10 +7,9 @@ const Header = () => {
    
     return (
      
-        <nav className="main-nav">
-
-            Header
-        </nav>
+        <div class="title">
+            <h1>HRnet</h1>
+        </div>
     
     );
 };
