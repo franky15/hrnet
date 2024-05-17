@@ -12,7 +12,7 @@ const PublicRouter = () => {
     return (
         <Routes>
             <Route element={<PublicLayout/>} >
-                <Route path='/list' element={<EmployeeList/>} />
+                <Route path='/employee-list.html' element={<EmployeeList/>} />
                 <Route path='/' element={<CreateEmployee/>} />
                 <Route path='*' element={<Error/>} />
             </Route>

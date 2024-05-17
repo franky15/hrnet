@@ -1,14 +1,65 @@
 import React,{useState} from 'react';
+
+import { Link } from 'react-router-dom';
+
+//importation des actions
+//import { addEmployee } from '../../_services/redux/reducers/Employees.Reducer';
+import { addEmployee } from './_slices.js/employeesSlice';
+
+//permettent d'utiliser les sélecteurs pour récupérer les données du state global et de dispatcher les actions
+import {  useSelector,useDispatch } from 'react-redux';
+
+//importation des composants
 import Modal from '../../components/publicComponents/Modal';
+//import datas from '../../datas';
 
 const CreateEmployee = () => {
 
-    //gestion du state de la modal
-    const [isOpenmodal, setIsOpenModal] = useState(false);
+    const datas = useSelector(state => state.employees.datas);
 
+     //permet d'éxécuter les actions
+     const dispatch = useDispatch();
+
+     //gestion du state de la modal
+     const [isOpenmodal, setIsOpenModal] = useState(false);
+
+
+    //gestion du state de l'employé
+    const [employee, setEmployee] = useState({
+
+                                firstName: '',
+                                lastName: '',
+                                dateOfBirth: '',
+                                startDate: '',
+                                street: '',
+                                city: '',
+                                state: '',
+                                zipCode: '',
+                                department: ''
+                            
+                            });
+
+   
+
+   //fonction permet de mettre à jour le state de l'employé
+   const handleChange = (e) => {
+
+        setEmployee({
+            ...employee,
+            [e.target.name]: e.target.value
+        });
+
+    }
+   
+
+    //fonction permet de sauvegarder un employé
     const saveEmployee = () => {
 
         setIsOpenModal(true);
+
+        //éxécution de l'action addEmployee en lui passant en paramètre l'employé
+        dispatch( addEmployee(employee) );
+        
     
     }
     const closeModel = () => {
@@ -16,43 +67,49 @@ const CreateEmployee = () => {
         setIsOpenModal(false);
     
     }
+
+
     return (
         <>
         <div className="container">
 
-            <a href="employee-list.html">View Current Employees</a>
+            <Link to="employee-list.html">View Current Employees</Link>
             <h2>Create Employee</h2>
             <form action="#" id="create-employee">
                 <label htmlFor="first-name">First Name</label>
-                <input type="text" id="first-name" />
+                <input type="text" name='firstName' value={employee.firstName} id="first-name" onChange={handleChange} />
 
                 <label htmlFor="last-name">Last Name</label>
-                <input type="text" id="last-name" />
+                <input type="text" name="lastName" id="last-name" value={employee.lastName}  onChange={handleChange}   />
 
                 <label htmlFor="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="text" />
+                <input id="dateOfBirth" type="date" name="dateOfBirth" value={employee.dateOfBirth} onChange={handleChange}  />
 
-                <label htmlFor="start-date">Start Date</label>
-                <input id="start-date" type="text" />
+                <label htmlFor="startDate">Start Date</label>
+                <input id="start-date" type="date" name="startDate" value={employee.startDate} onChange={handleChange} />
 
                 <fieldset className="address">
                     <legend>Address</legend>
 
                     <label htmlFor="street">Street</label>
-                    <input id="street" type="text" />
+                    <input id="street" type="text" name="street" value={employee.street} onChange={handleChange} />
 
                     <label htmlFor="city">City</label>
-                    <input id="city" type="text" />
+                    <input id="city" type="text"  name="city" value={employee.city}  onChange={handleChange} />
 
                     <label htmlFor="state">State</label>
-                    <select name="state" id="state"></select>
+                    <select name="state" id="state" value={employee.state} onChange={handleChange}>
+                        {datas.map((employee, index) => (
+                            <option key={index}>{employee.name}</option>
+                        ))}
+                    </select>
 
-                    <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" />
+                    <label htmlFor="zipCode">Zip Code</label>
+                    <input id="zip-code" type="number" name="zipCode" value={employee.zipCode} onChange={handleChange}  />
                 </fieldset>
 
                 <label htmlFor="department">Department</label>
-                <select name="department" id="department">
+                <select name="department" id="department" value={employee.department} onChange={handleChange}>
                     <option>Sales</option>
                     <option>Marketing</option>
                     <option>Engineering</option>

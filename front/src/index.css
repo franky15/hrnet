@@ -58,4 +58,109 @@ label {
   cursor: pointer;
 }
 
+.EmployeeList {
+  width: 80%;
+  margin: auto;
+}
+.EmployeeList__filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+.EmployeeList__filters .containerSelect {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.EmployeeList__filters .containerSearch {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.EmployeeList__filters .containerSearch input {
+  width: 80%;
+  height: 30px;
+}
+.EmployeeList__table table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-left: 0px solid;
+  border-right: 0px solid;
+}
+.EmployeeList__table table th {
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.EmployeeList__table table th .tableTh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.EmployeeList__table table th .sort {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.EmployeeList__table table th .sort i {
+  font-size: 20px;
+  color: rgb(191, 191, 191);
+}
+.EmployeeList__table table th .sort .fa-caret-up {
+  position: relative;
+  top: 5px;
+}
+.EmployeeList__table table th .sort .fa-caret-down {
+  position: relative;
+  top: -5px;
+}
+.EmployeeList__table table td {
+  height: 30px;
+  text-align: center;
+  border-bottom: 1px solid rgb(232, 231, 231);
+  border-left: 0px solid red;
+}
+.EmployeeList .arrowContainer {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  border-top: solid 1px black;
+}
+.EmployeeList .arrowContainer__changePage {
+  width: 10%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.EmployeeList .arrowContainer p {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.EmployeeList .arrowContainer p i {
+  cursor: pointer;
+}
+.EmployeeList .arrowContainer .previous {
+  display: flex;
+  justify-content: start;
+}
+.EmployeeList .arrowContainer .next {
+  display: flex;
+  justify-content: end;
+}
+.EmployeeList .arrowContainer .indexPage {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=index.css.map */

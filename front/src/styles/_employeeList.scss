@@ -1,0 +1,150 @@
+.EmployeeList{
+
+    width: 80%;
+    margin:  auto;
+
+    &__filters{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        //border: solid red;
+
+        .containerSelect{
+            width: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            //border: solid blue;
+        }
+        .containerSearch{
+            width:25%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            //border: solid yellow;
+
+            input{
+                width: 80%;
+                height: 30px;
+                //border: solid black;
+            }
+        }
+    }
+    &__table{
+
+        
+        //border: solid green;
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-left: 0px solid ;
+            border-right: 0px solid;
+            th {
+                height: 50px;
+                text-align: center;
+                border-bottom: 1px solid black;
+
+                .tableTh{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    //border: solid red;
+                }
+                .sort{
+                    //height: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 5px;
+                    cursor: pointer;
+                    //border: solid black;
+
+                    i{
+                        font-size: 20px;
+                        color: rgb(191, 191, 191);
+                    }
+
+                    .fa-caret-up{
+
+                        position: relative;
+                        top: 5px;
+                        
+                    }
+                    .fa-caret-down{
+
+                        position: relative;
+                        top: -5px;
+                    }
+                }
+     
+            }
+            td {
+                height: 30px;
+                text-align: center;
+                border-bottom: 1px solid rgb(232, 231, 231);
+                border-left: 0px solid red;
+
+
+            }
+        }
+    }
+
+    .arrowContainer{
+
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        border-top: solid 1px black;
+
+        &__changePage{
+
+            width: 10%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+           // border: solid green;
+
+        }
+        p{
+
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            //border: solid blue;
+
+            i{
+                cursor: pointer;
+                
+            }
+
+           
+        }
+        .previous{
+            
+            display: flex;
+            justify-content: start;
+            //border: solid black;
+        }
+        .next{
+            display: flex;
+            justify-content: end;
+            //border: solid black;
+        }
+        .indexPage{
+
+            font-size: 20px;
+            font-weight: bold;
+            //border: solid yellow;
+        }
+    }
+}
+
+
