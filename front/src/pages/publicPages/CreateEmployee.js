@@ -11,6 +11,9 @@ import {  useSelector,useDispatch } from 'react-redux';
 
 //importation des composants
 import Modal from '../../components/publicComponents/Modal';
+//import CommonlyUsedComponents from '../../components/publicComponents/CommonlyUsedComponents';
+import CommonlyUsedComponents from '../../components/DateTimePicker';
+
 //import datas from '../../datas';
 
 const CreateEmployee = () => {
@@ -39,7 +42,18 @@ const CreateEmployee = () => {
                             
                             });
 
-   
+   //fonction de récupération des données du DatePicker vers le parent
+    const getDate = (dateOfBirth, startDate) => {
+            
+        setEmployee({
+            ...employee,
+            dateOfBirth: dateOfBirth,
+            startDate: startDate
+        });
+
+    }
+
+    console.log(employee);
 
    //fonction permet de mettre à jour le state de l'employé
    const handleChange = (e) => {
@@ -48,6 +62,8 @@ const CreateEmployee = () => {
             ...employee,
             [e.target.name]: e.target.value
         });
+
+      
 
     }
    
@@ -82,12 +98,19 @@ const CreateEmployee = () => {
                 <label htmlFor="last-name">Last Name</label>
                 <input type="text" name="lastName" id="last-name" value={employee.lastName}  onChange={handleChange}   />
 
-                <label htmlFor="date-of-birth">Date of Birth</label>
-                <input id="dateOfBirth" type="date" name="dateOfBirth" value={employee.dateOfBirth} onChange={handleChange}  />
+                {  /*
+                    <label htmlFor="date-of-birth">Date of Birth</label>
+                    <input id="dateOfBirth" type="date" name="dateOfBirth" value={employee.dateOfBirth} onChange={handleChange}  />
 
-                <label htmlFor="startDate">Start Date</label>
-                <input id="start-date" type="date" name="startDate" value={employee.startDate} onChange={handleChange} />
+                    <label htmlFor="startDate">Start Date</label>
+                    <input id="start-date" type="date" name="startDate" value={employee.startDate} onChange={handleChange} />
+                */
+                }
 
+
+                {<CommonlyUsedComponents  getDate={getDate} /> }
+
+               
                 <fieldset className="address">
                     <legend>Address</legend>
 

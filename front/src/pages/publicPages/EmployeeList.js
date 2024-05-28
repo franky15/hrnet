@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 //importation des actions
-import { addEmployee } from './_slices.js/employeesSlice';
+//import { addEmployee } from './_slices.js/employeesSlice';
 import EmployeesSearch from '../../components/EmployeesSearch';
 
 const EmployeeList = () => {

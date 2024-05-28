@@ -1,16 +1,6 @@
-import React, {useState, useEffect} from 'react';
-
-//permettent d'utiliser les sélecteurs pour récupérer les données du state global et de dispatcher les actions
-import { useSelector } from 'react-redux';
+import React from 'react';
 
 const EmployeesSearch = ({resultsearch}) => {
-
-     //récupération du de la liste d'employés dans le store stocker lors du dispatch de l'action addEmployee
-     /*let listEmployeesStore = useSelector( (state) => state.employees.listEmployees);
-
-     console.log("****listEmployeesStore", listEmployeesStore);*/
-
-     console.log("****resultsearch", resultsearch);
 
     return (
         <tbody>
