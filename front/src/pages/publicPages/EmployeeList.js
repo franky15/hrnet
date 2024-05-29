@@ -13,8 +13,6 @@ const EmployeeList = () => {
     //récupération du de la liste d'employés dans le store stocker lors du dispatch de l'action addEmployee
     let listEmployeesStore = useSelector( (state) => state.employees.listEmployees);
 
-    console.log("****listEmployeesStore", listEmployeesStore);
-
     //gestion du state des employés
     let [employees, setEmployees] = useState([]);
 
@@ -37,10 +35,6 @@ const EmployeeList = () => {
     let [isOpenFilter, setisOpenFilter] = useState(false);
     let [listPerPageFilter, setListPerPageFilter] = useState([]);
     let [resultsearch, setResultsearch] = useState([]);
-    
-    
-
-    //console.log("****listEmployeesStore", listEmployeesStore);
 
     let listData ;
 
@@ -78,10 +72,9 @@ const EmployeeList = () => {
 
         }, []);
 
-        console.log("****listElementsPerPageFilter", listElementsPerPageFilter);
-
         setListPerPageFilter(listElementsPerPageFilter);
 
+        
 
         disabledButton();
        
@@ -92,27 +85,12 @@ const EmployeeList = () => {
     //fonction permettant de changer le nombre d'éléments par page
     const quantityElementsChange = (value) => {
 
-       // console.log("quantityElementsChange", value);
         setQuantityElementsPerPage(value);
     }
 
-  
-
-    //console.log("****listPerPage", listPerPage);
-    //console.log("****listEmployeesFinale", listEmployeesFinale);
-    
     // let listEmployeesFinale = listPerPage[0];
      let listElementsPerPage = listPerPage;
 
-     
-    // console.log("****listEmployeesStore", listEmployeesStore);
-    //console.log("****employees", employees);
-    // console.log("****listPerPage", listPerPage);
-    console.log("****listElementsPerPage", listElementsPerPage);
-    //console.log("****listEmployeesFinale", listEmployeesFinale);
-
-
-  
     //fonction permettant de désactiver les boutons suivant et précédent
     function disabledButton () {
 
@@ -120,15 +98,10 @@ const EmployeeList = () => {
         const elementPre = document.querySelector('.previous');
         const elementNext = document.querySelector('.next');
 
-        console.log("****isOpenFilter", isOpenFilter);
-        console.log("****isOpensearch", isOpensearch);
-
         if( isOpenFilter === false ){
 
-            console.log("****indexPage désactive", indexPage);
-
-            if( indexPage === 1 ){
-            
+            if( indexPage === 1 && listEmployeesFinale.length !== 0 ){
+                
                 elementPre.style.display ="none";
                 elementNext.style.display ="block";
     
@@ -139,7 +112,12 @@ const EmployeeList = () => {
                 elementPre.style.display ="block";
                 elementNext.style.display ="none";
     
-            }else {
+            }else if(indexPage === 1 && listEmployeesFinale.length === 0){
+
+                elementPre.style.display ="none"; 
+                elementNext.style.display ="none";
+        
+        }else {
                 
                 elementPre.style.display ="block";
                 elementNext.style.display ="block";
@@ -147,27 +125,18 @@ const EmployeeList = () => {
 
         } else if( isOpenFilter === true ){
 
-            console.log("****resultsearch active", resultsearch);
-            console.log("****resultsearch length", resultsearch.length);
-            console.log("****indexPageFilter active", indexPageFilter);
-            
             if(  indexPageFilter === 1 && indexPageFilter === listPerPageFilter.length){
             
-                console.log("****fleche aucune activée", indexPageFilter);
-
                 elementPre.style.display ="none"; 
                 elementNext.style.display ="none";
     
             }else if( indexPageFilter === 1 && indexPageFilter < listPerPageFilter.length){
             
-                console.log("****fleche avant activée", indexPageFilter);
-
                 elementPre.style.display ="none";
                 elementNext.style.display ="block";
     
             }else if( indexPageFilter > 1 && indexPageFilter === listPerPageFilter.length){
               
-                console.log("****fleche arriere activée", indexPageFilter);
                 elementPre.style.display ="block";
                 elementNext.style.display ="none";
             }
@@ -246,11 +215,6 @@ const EmployeeList = () => {
         
 
     }
-
-    console.log("****listEmployeesFinale après", listEmployeesFinale);
-
-    // let listAscending = ["ufirstName", "ulastName", "udateOfBirth", "ustartDate", "ustreet", "ucity", "ustate", "uzipCode", "udepartment"];
-    // let listDescending = ["dfirstName", "dlastName", "ddateOfBirth", "dstartDate", "dstreet", "dcity", "dstate", "dzipCode", "ddepartment"];
 
     let listOrder = ["firstName", "lastName", "dateOfBirth", "startDate", "street", "city", "state", "zipCode", "department"];
 
@@ -364,17 +328,12 @@ const EmployeeList = () => {
         
         if(valueSearch !== "" && valueSearch.length > 0){
 
-            
-            console.log("****valueSearch", valueSearch);
-
             setisOpenSearch(true);
             setResultsearch(valueSearch);
             setisOpenFilter(true);
 
 
         }else if(valueSearch.length === 0){
-
-            console.log("****valueSearch", valueSearch);
 
             setisOpenSearch(false);
             setResultsearch([]);
@@ -384,10 +343,6 @@ const EmployeeList = () => {
      
     }
     
-    
-
-   console.log("****listEmployeesFinale après", listEmployeesFinale);
-
     return (
         <div className='EmployeeList'>
             <div className='EmployeeList__title'>
@@ -864,9 +819,9 @@ const EmployeeList = () => {
                                 isOpenFilter === false && 
                                 (
                                     isOpensearch ?      
-                                    <p className='indexPage'>{indexPage}/{listEmployeesFinale.length}</p>
+                                    <p className='indexPage'>{listEmployeesFinale.length === 0 ? 0 :  indexPage}/{listEmployeesFinale.length}</p>
                                     :
-                                    <p className='indexPage'>{indexPage}/{listElementsPerPage.length}</p>
+                                    <p className='indexPage'>{listEmployeesFinale.length === 0 ? 0 :  indexPage}/{listElementsPerPage.length}</p>
                                 )
                             }
 

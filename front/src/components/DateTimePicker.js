@@ -66,7 +66,7 @@ function Label({ componentName, valueType, isProOnly }) {
   return content;
 }
 
-export default function CommonlyUsedComponents({getDate}) {
+export default function CommonlyUsedComponents({getDate, dateIsopen}) {
   
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [startDate, setStartDate] = useState(null);
@@ -92,7 +92,6 @@ export default function CommonlyUsedComponents({getDate}) {
         
         birth = newDate;
 
-        //getDate(newDate, startDate);
       }
 
 
@@ -113,7 +112,27 @@ export default function CommonlyUsedComponents({getDate}) {
       }
     }
 
-    getDate(birth, start);
+    console.log("***birth", birth, "***birth", start);
+
+    const resetValues = () => {
+
+      if(dateIsopen) {
+
+        birth = ""
+        start = ""
+ 
+      }
+
+    }
+    resetValues();
+    
+
+    if (birth && start) {
+
+      getDate(birth, start); // Appelez seulement si les deux valeurs sont non-nulles
+    
+    }
+    //getDate(birth, start);
     
   }, [dateOfBirth, startDate, ]);
   
