@@ -100,8 +100,10 @@ const EmployeeList = () => {
 
         if( isOpenFilter === false ){
 
-            if( indexPage === 1 && listEmployeesFinale.length !== 0 ){
+            if( indexPage === 1  ){ //&& listEmployeesFinale.length !== 0
                 
+                console.log("indexPage", indexPage, "listEmployeesFinale", listEmployeesFinale.length);
+
                 elementPre.style.display ="none";
                 elementNext.style.display ="block";
     
@@ -112,12 +114,14 @@ const EmployeeList = () => {
                 elementPre.style.display ="block";
                 elementNext.style.display ="none";
     
-            }else if(indexPage === 1 && listEmployeesFinale.length === 0){
+            }/*else if(indexPage === 1 && listEmployeesFinale.length === 0){
+
+                console.log("indexPage", indexPage, "listEmployeesFinale", listEmployeesFinale.length);
 
                 elementPre.style.display ="none"; 
                 elementNext.style.display ="none";
         
-        }else {
+        }*/else {
                 
                 elementPre.style.display ="block";
                 elementNext.style.display ="block";

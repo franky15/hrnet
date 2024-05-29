@@ -56,21 +56,6 @@ const CreateEmployee = () => {
 
     
    }, [employee]);
-   
-   /*
-   const getDate = (dateOfBirth, startDate) => {
-            
-        setEmployee({
-            ...employee,
-            dateOfBirth: dateOfBirth,
-            startDate: startDate
-        });
-
-    }
-    */
-
-
-    console.log("***employee", employee);
 
 
    //fonction permet de mettre à jour le state de l'employé
