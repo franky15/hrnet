@@ -119,7 +119,7 @@ const CreateEmployee = () => {
         <>
         <div className="container">
 
-            <Link to="employee-list.html">View Current Employees</Link>
+            <Link to="employee-list">View Current Employees</Link>
             <h2>Create Employee</h2>
             <form action="#" id="create-employee">
                 <label htmlFor="first-name">First Name</label>
