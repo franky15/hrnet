@@ -22,8 +22,6 @@ const employeesSlice = createSlice({
             state.statusAddEmployee = "success";
             state.error = null;
 
-            console.log("****action.payload", action.payload);
-
             localStorage.setItem('employeesList', JSON.stringify(state.statusAddEmployee)); 
             
             localStorage.setItem('listEmployees', JSON.stringify(state.listEmployees)); 

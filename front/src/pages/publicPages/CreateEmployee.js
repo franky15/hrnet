@@ -46,7 +46,7 @@ const CreateEmployee = () => {
                             });
 
    //fonction de récupération des données du DatePicker vers le parent
-   const getDate = useCallback((birth, start) => {
+   const getDate = (birth, start) => {
     
         setEmployee({
             ...employee,
@@ -55,7 +55,7 @@ const CreateEmployee = () => {
         });
 
     
-   }, [employee]);
+   }
 
 
    //fonction permet de mettre à jour le state de l'employé
@@ -86,6 +86,7 @@ const CreateEmployee = () => {
 
         setIsOpenModal(true);
 
+        //reinitialisation des champs dateOfBirth et startDate
         setDateIsopen(true);
 
         //réinitialisation du state de l'employé
@@ -106,6 +107,7 @@ const CreateEmployee = () => {
         
     
     }
+    
     const closeModel = () => {
 
         setIsOpenModal(false);

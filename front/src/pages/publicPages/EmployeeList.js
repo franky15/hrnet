@@ -1,13 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
+
+import ManageList from "managelist";
+
 //permettent d'utiliser les sélecteurs pour récupérer les données du state global et de dispatcher les actions
 import { useSelector } from 'react-redux';
 
-//importation des actions
-//import { addEmployee } from './_slices.js/employeesSlice';
-import EmployeesSearch from '../../components/EmployeesSearch';
+// //importation des actions
+// import EmployeesSearch from '../../components/EmployeesSearch';
 
+const EmployeeList = () => {
+
+
+    //récupération du de la liste d'employés dans le store stocker lors du dispatch de l'action addEmployee
+    let listEmployeesStore = useSelector( (state) => state.employees.listEmployees);
+
+    console.log("***listEmployeesStore",listEmployeesStore);
+    return (
+        <>
+            <ManageList listEmployeesStore={listEmployeesStore} />
+        </>
+        
+    )
+
+}
+
+export default EmployeeList;
+
+/*
 const EmployeeList = () => {
 
     //récupération du de la liste d'employés dans le store stocker lors du dispatch de l'action addEmployee
@@ -26,8 +47,8 @@ const EmployeeList = () => {
 
     let [listPerPage, setListPerPage] = useState([]);
 
-      //gestion du state de la liste finale d'employés à afficher
-      let [listEmployeesFinale, setListEmployeesFinale] = useState([]);
+    //gestion du state de la liste finale d'employés à afficher
+    let [listEmployeesFinale, setListEmployeesFinale] = useState([]);
 
 
     //gestion du state de la recherche et filtre
@@ -55,8 +76,10 @@ const EmployeeList = () => {
 
             }, []);
             
+            //sous liste d'employés
             setListPerPage(listElementsPerPage1);
 
+            //liste d'employés à afficher dans une page
             setListEmployeesFinale(listElementsPerPage1[indexPage - 1]);
         
 
@@ -82,6 +105,40 @@ const EmployeeList = () => {
 
     }, [indexPage,indexPageFilter,isOpensearch,listEmployeesStore,quantityElementsPerPage]);
    
+
+    /////////////////////////////////////
+
+function EmployeesSearch(resultsearch) {
+
+
+    return (
+        <tbody>
+            { resultsearch && resultsearch.length > 0 && resultsearch.map((employee, index) => (
+                <tr key={index}>
+                    <td>{employee.firstName}</td>
+                    <td>{employee.lastName}</td>
+                    <td>{employee.dateOfBirth}</td>
+                    <td>{employee.startDate}</td>
+                    <td>{employee.street}</td>
+                    <td>{employee.city}</td>
+                    <td>{employee.state}</td>
+                    <td>{employee.zipCode}</td>
+                    <td>{employee.department}</td>
+
+                </tr>
+            ))}
+        </tbody>
+    );
+
+}
+
+
+
+
+
+
+    //////////////////////////////////
+
     //fonction permettant de changer le nombre d'éléments par page
     const quantityElementsChange = (value) => {
 
@@ -102,8 +159,6 @@ const EmployeeList = () => {
 
             if( indexPage === 1  ){ //&& listEmployeesFinale.length !== 0
                 
-                console.log("indexPage", indexPage, "listEmployeesFinale", listEmployeesFinale.length);
-
                 elementPre.style.display ="none";
                 elementNext.style.display ="block";
     
@@ -114,14 +169,7 @@ const EmployeeList = () => {
                 elementPre.style.display ="block";
                 elementNext.style.display ="none";
     
-            }/*else if(indexPage === 1 && listEmployeesFinale.length === 0){
-
-                console.log("indexPage", indexPage, "listEmployeesFinale", listEmployeesFinale.length);
-
-                elementPre.style.display ="none"; 
-                elementNext.style.display ="none";
-        
-        }*/else {
+            }else {
                 
                 elementPre.style.display ="block";
                 elementNext.style.display ="block";
@@ -788,7 +836,11 @@ const EmployeeList = () => {
                         {
                             isOpensearch ?
 
-                            <EmployeesSearch resultsearch={resultsearch} />
+
+                        EmployeesSearch(resultsearch)
+                           
+
+
                                 :
                             <tbody>
                             { listEmployeesFinale && listEmployeesFinale.length > 0 && listEmployeesFinale.map((employee, index) => (
@@ -856,3 +908,8 @@ const EmployeeList = () => {
 };
 
 export default EmployeeList;
+
+*/
+
+
+// {/*<EmployeesSearch resultsearch={resultsearch} />*/}
